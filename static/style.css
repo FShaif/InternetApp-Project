@@ -1,3 +1,18 @@
-/*
-  This file for all your customized css styles
-*/
+
+button[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  cursor: pointer;
+}
+.btn {
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+
+.btn:hover {
+  background-color: #04AA6D;
+  color: white;
+  opacity: 1;
+}
