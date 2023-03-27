@@ -1,4 +1,5 @@
-
+<!-- JQuery core -->
+<script src="static/vendor/jquery/jquery.min.js"></script>
 
 <h1>
   Reqres-data Page
@@ -8,5 +9,25 @@
   Generated HTML by javascript)
   JS "for loop" is used to show all data using bootstrap elements.
   data should be retrieved from 
-  <a href="https://reqres.in/api/users">https://reqres.in/api/users</a>
 </p>
+
+<button id="myButton" >Change</button>
+<div id="mydiv">
+
+</div>
+
+<script>
+  $("#myButton").click(function (){
+     $.ajax({
+       type: 'GET',
+       url: 'https://reqres.in/api/users/2',
+      })
+      .done( function(resp){ $('#myDiv').text(resp) } )
+      //.fail(func…)
+      //.always(func…);
+  });
+</script>
+
+
+
+
