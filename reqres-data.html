@@ -1,20 +1,22 @@
+<!DOCTYPE html>
+<head>
 <!-- JQuery core -->
 <script src="static/vendor/jquery/jquery.min.js"></script>
-
-
-
+</head>
+<body>
 
 <h1>Reqres-data Page</h1>
 
-
-<p>this page all mobli's data from Reqres-data.js<code></code></p>
-
-
+<p>this page shows a user's mobiles's data from <code>Reqres-data.js</code></p>
 
 <button id="myButton" >Change</button>
 
 <div id="mydiv">
+  <img src="" alt="">
+  <h2 id="user_name">User Name Show Here</h2>
+  <h4><a id="user_email"href=""></a></h4>
 </div>
+
 
 <script>
   $("#myButton").click(function (){
@@ -23,16 +25,20 @@
        url: 'https://reqres.in/api/users/4',
       })
       .done( function(resp){ 
-        // $('#myDiv').text(resp)
+        //$('#mydiv').text(resp)
         console.log(resp)
-        $("#user_name").html(resp.data.frist_name)
 
-      } )
-      //.fail(func…)
-      //.always(func…);
+        $("#mydiv img").attr('src', resp.data.avatar)
+
+        $("#user_name").html(resp.data.first_name)
+
+        $("#user_email").attr('href', resp.data.email)
+        $("#user_email").html(resp.data.email)
+
+      })
   });
+
 </script>
 
-
-
+</body>
 
