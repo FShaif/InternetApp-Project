@@ -2,6 +2,8 @@
 <head>
 <!-- JQuery core -->
 <script src="static/vendor/jquery/jquery.min.js"></script>
+<<<<<<< HEAD
+<link rel="stylesheet" href="Bootstrap/css/bootstrap-grid.min.css">
 
 
 
@@ -11,7 +13,24 @@
 
 <p>this page all mobli's data from Reqres-data.js<code></code></p>
 
+<table style="width: 40%;">
+  <tr >
+    <th>First</th>
+    <th>Last</th>
+    <th>Email</th>
+  </tr>
 
+  <tbody id="myTable">
+      
+
+=======
+</head>
+<body>
+
+<h1>Reqres-data Page</h1>
+
+<p>this page shows a user's mobiles's data from <code>Reqres-data.js</code></p>
+>>>>>>> d245d5a845dadc0f937f7528d7988a562cad2116
 
 <button id="myButton" >Change</button>
 
@@ -28,17 +47,50 @@
 
      $.ajax({
        type: 'GET',
+<<<<<<< HEAD
+       url: 'https://reqres.in/api/users',
+      
+      success: function(resp){
+      myList = resp.data
+      buildTable(myList)
+      console.log(myList)
+      }
+    });
+  
+  
+  })
+
+  function buildTable(data){
+  var table = document.getElementById('myTable')
+
+  for (var i = 0; i < data.length; i++){
+    var row = `<tr>
+            <td>${data[i].first_name}</td>
+            <td>${data[i].last_name}</td>
+            <td>${data[i].email}</td>
+          </tr>`
+    table.innerHTML += row
+  }
+}
+</script>
+=======
        url: 'https://reqres.in/api/users/4',
       })
       .done( function(resp){ 
-        // $('#myDiv').text(resp)
+        //$('#mydiv').text(resp)
         console.log(resp)
-        $("#user_name").html(resp.data.frist_name)
 
-      } )
-      //.fail(func…)
-      //.always(func…);
+        $("#mydiv img").attr('src', resp.data.avatar)
+>>>>>>> d245d5a845dadc0f937f7528d7988a562cad2116
+
+        $("#user_name").html(resp.data.first_name)
+
+        $("#user_email").attr('href', resp.data.email)
+        $("#user_email").html(resp.data.email)
+
+      })
   });
+
 </script>
 
 </body>
