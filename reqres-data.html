@@ -1,60 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
 <!-- JQuery core -->
 <script src="static/vendor/jquery/jquery.min.js"></script>
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="Bootstrap/css/bootstrap-grid.min.css">
+<style>
+  table, th, td {
+    border:1px solid black;
+    text-align: center;
+  }
+</style>
+</head>
 
-
+<body>
 <h1>Reqres-data Page</h1>
-
-
-<p>this page all mobli's data from Reqres-data.js<code></code></p>
-
-
-<table style="width: 40%;">
-  <tr >
-      <th>First</th>
-      <th>Last</th>
-      <th>Email</th>
-  </tr>
-
-  <tbody id="myTable">
-      
-
+<p>this page shows a user's mobiles's data from <code>Reqres-data.js</code></p>
 
 <button id="myButton" >Change</button>
-
 <div id="mydiv">
+  <h2 id="user_name">User Name Show Here</h2>
+
+  <table id="table" style="width: 100%">
+    <th>id</th><th>email</th><th>first_name</th><th>last_name</th>
+    <tr>
+        <td id="id"></td>
+        <td id="email"></td>
+        <td id="first_name"></td>
+        <td id="last_name"></td>
+    </tr>
+  </table>
 </div>
 
 <script>
   $("#myButton").click(function (){
-    var myList = []
+    $.ajax({
+    type: 'GET',
+    data: {},
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    url: 'https://reqres.in/api/users',
+    success:function(data){
+      data.data.forEach(element => {
+          var row = document.createElement("tr");
+          var id = document.createElement('td');
+          var email = document.createElement('td');
+          var first_name = document.createElement('td');
+          var last_name = document.createElement('td');
 
-     $.ajax({
-       type: 'GET',
-       url: 'https://reqres.in/api/users',
-      
-      success: function(resp){
-      myList = resp.data
-      buildTable(myList)
-      console.log(myList)
-      }
-    });
-  
-  
-  })
+          id.innerHTML = element.id;
+          email.innerHTML = element.email;
+          first_name.innerHTML = element.first_name;
+          last_name.innerHTML = element.last_name;
 
-  function buildTable(data){
-  var table = document.getElementById('myTable')
+          row.appendChild(id);
+          row.appendChild(email);
+          row.appendChild(first_name);
+          row.appendChild(last_name);
 
-  for (var i = 0; i < data.length; i++){
-    var row = `<tr>
-            <td>${data[i].first_name}</td>
-            <td>${data[i].last_name}</td>
-            <td>${data[i].email}</td>
-          </tr>`
-    table.innerHTML += row
-  }
-}
+          $('#table').append(row);
+      });
+    },
+    error:function(errorMessage)
+    {
+        console.log(errorMessage);
+    }
+  });
+});
 </script>
+
+</body>
+</html>
