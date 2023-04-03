@@ -1,5 +1,6 @@
 <!-- JQuery core -->
 <script src="static/vendor/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="Bootstrap/css/bootstrap-grid.min.css">
 
 
 
@@ -9,6 +10,15 @@
 
 <p>this page all mobli's data from Reqres-data.js<code></code></p>
 
+<table style="width: 40%;">
+  <tr >
+    <th>First</th>
+    <th>Last</th>
+    <th>Email</th>
+  </tr>
+
+  <tbody id="myTable">
+      
 
 
 <button id="myButton" >Change</button>
@@ -18,19 +28,34 @@
 
 <script>
   $("#myButton").click(function (){
+    var myList = []
+
      $.ajax({
        type: 'GET',
-       url: 'https://reqres.in/api/users/4',
-      })
-      .done( function(resp){ 
-        // $('#myDiv').text(resp)
-        console.log(resp)
-        $("#user_name").html(resp.data.frist_name)
+       url: 'https://reqres.in/api/users',
+      
+      success: function(resp){
+      myList = resp.data
+      buildTable(myList)
+      console.log(myList)
+      }
+    });
+  
+  
+  })
 
-      } )
-      //.fail(func…)
-      //.always(func…);
-  });
+  function buildTable(data){
+  var table = document.getElementById('myTable')
+
+  for (var i = 0; i < data.length; i++){
+    var row = `<tr>
+            <td>${data[i].first_name}</td>
+            <td>${data[i].last_name}</td>
+            <td>${data[i].email}</td>
+          </tr>`
+    table.innerHTML += row
+  }
+}
 </script>
 
 
