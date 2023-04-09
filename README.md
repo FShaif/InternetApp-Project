@@ -10,11 +10,17 @@
 ```
 Extract the files from the .Zip 
 
-
 open the `index.html` on any browser to explore the html pages of this project
 
-Create a virtual environment by using the following command in console before you start testing the source code:
-> python -m venv env
+download and install python
+
+Create a virtual environment for your workspace by inputting the following command before you start testing the source code:
+>python -m venv env
+
+Install Flask by inputting the following commands in the terminal
+> pip install flask
+> python.exe -m pip install --upgrade pip
+
 ```
 
 # Instructor comments
