@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  {% extends "layout.html" %}
+  {% block head %}
+  {{ super() }}
   <title>Reqres-data</title>
-  <!-- Favicon and touch icons -->
-  <link rel="shortcut icon" type="image/jpg" href="static\images\favicon.ico"/>
+  <!-- Favicon no longer needed -->
+  <!-- <link rel="shortcut icon" type="image/jpg" href="static\images\favicon.ico"/> -->
+  {% endblock %}
 </head>
 
 <body>
   <!-- Main Content -->
-  {% extends "layout.html" %}
   {% block myContent %}
   <div class="container">
     <div class="row">

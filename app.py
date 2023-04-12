@@ -41,12 +41,11 @@ def home():
                            posts=posts)
 
 # Trying to get favicon working on layout instead of html page
-#import os
-#from flask import send_from_directory
-#@app.route("/static/favicon.ico") 
-#def fav():
-#    print(os.path.join(app.root_path, 'static'))
-#    return send_from_directory(app.static_folder, 'favicon.ico')
+import os
+from flask import send_from_directory
+@app.route("/favicon.ico") 
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
 	app.run( debug=True )
