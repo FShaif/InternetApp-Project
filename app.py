@@ -24,19 +24,18 @@ def contact():
 def mobiles():
     return render_template('mobiles.html')
 
-@app.route("/post-all")
-def postAll():
-    return render_template('post-all.html')
 
 @app.route("/post-single")
 def postSingle():
-    return render_template('post-single.html')
+    return render_template('post-single.html',
+                           title='single posts',
+                           posts=posts)
 
 @app.route("/reqres-data")
 def reqresData():
     return render_template('reqres-data.html')
 
-@app.route("/homethiwthdata")
+@app.route("/post-all")
 def home():
     return render_template('post-all.html',
                            title='all posts',

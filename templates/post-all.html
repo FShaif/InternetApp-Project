@@ -23,8 +23,10 @@
   {% for p in posts %}
     <div class="alert alert-success">
       <h2>{{p['title']}}</h2>
-      <p> {{p['content']}}</p>
+      <h3> {{p['content']}}</h3>
+      <p>{{p['date_posted']}}</p>
       <small>{{p['author']}}</small>
+
     </div>
 
   {% endfor %}
