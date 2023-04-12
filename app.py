@@ -1,5 +1,4 @@
-from flask import Flask,render_template,send_from_directory
-import os
+from flask import Flask,render_template
 from postdata import posts
 
 app = Flask(__name__)
@@ -41,11 +40,13 @@ def home():
                            title='all posts',
                            posts=posts)
 
-# Trying to get favicon working on layout instead of page
-@app.route("/static/favicon.ico") 
-def fav():
-    print(os.path.join(app.root_path, 'static'))
-    return send_from_directory(app.static_folder, 'favicon.ico')
+# Trying to get favicon working on layout instead of html page
+#import os
+#from flask import send_from_directory
+#@app.route("/static/favicon.ico") 
+#def fav():
+#    print(os.path.join(app.root_path, 'static'))
+#    return send_from_directory(app.static_folder, 'favicon.ico')
 
 if __name__ == '__main__':
 	app.run( debug=True )
