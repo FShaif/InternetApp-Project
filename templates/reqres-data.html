@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- JQuery core -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-
-<style>
-  table, th, td {
-    border:1px solid black;
-    text-align: center;
-  }
-</style>
+  <title>Reqres-data</title>
+  <!-- Favicon and touch icons -->
+  <link rel="shortcut icon" type="image/jpg" href="static\images\Favicon.ico"/>
 </head>
 
 <body>
-<h1>Reqres-data Page</h1>
-<p>this page shows a user's mobiles's data from <code>Reqres-data.js</code></p>
+  <!-- Main Content -->
+  {% extends "layout.html" %}
+  {% block myContent %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Reqres-data Page</h1>
+        <p>this page shows a user's mobiles's data from <code>Reqres-data.js</code></p>
 
-<button id="myButton" >Change</button>
-<div id="mydiv">
-  <h2 id="user_name">User Name Show Here</h2>
+        <button id="myButton" >Change</button>
+        <div id="mydiv">
+          <h2 id="user_name">User Name Show Here</h2>
 
-  <table id="table" style="width: 100%">
-    <th>id</th><th>email</th><th>first_name</th><th>last_name</th>
-    <tr>
-        <td id="id"></td>
-        <td id="email"></td>
-        <td id="first_name"></td>
-        <td id="last_name"></td>
-    </tr>
-  </table>
-</div>
+          <table id="table" style="width: 100%">
+            <th>id</th><th>email</th><th>first_name</th><th>last_name</th>
+            <tr>
+                <td id="id"></td>
+                <td id="email"></td>
+                <td id="first_name"></td>
+                <td id="last_name"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $("#myButton").click(function (){
+      $.ajax({
+      type: 'GET',
+      data: {},
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      url: 'https://reqres.in/api/users',
+      success:function(data){
+        data.data.forEach(element => {
+            var row = document.createElement("tr");
+            var id = document.createElement('td');
+            var email = document.createElement('td');
+            var first_name = document.createElement('td');
+            var last_name = document.createElement('td');
 
-<script>
-  $("#myButton").click(function (){
-    $.ajax({
-    type: 'GET',
-    data: {},
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    url: 'https://reqres.in/api/users',
-    success:function(data){
-      data.data.forEach(element => {
-          var row = document.createElement("tr");
-          var id = document.createElement('td');
-          var email = document.createElement('td');
-          var first_name = document.createElement('td');
-          var last_name = document.createElement('td');
+            id.innerHTML = element.id;
+            email.innerHTML = element.email;
+            first_name.innerHTML = element.first_name;
+            last_name.innerHTML = element.last_name;
 
-          id.innerHTML = element.id;
-          email.innerHTML = element.email;
-          first_name.innerHTML = element.first_name;
-          last_name.innerHTML = element.last_name;
+            row.appendChild(id);
+            row.appendChild(email);
+            row.appendChild(first_name);
+            row.appendChild(last_name);
 
-          row.appendChild(id);
-          row.appendChild(email);
-          row.appendChild(first_name);
-          row.appendChild(last_name);
-
-          $('#table').append(row);
-      });
-    },
-    error:function(errorMessage)
-    {
-        console.log(errorMessage);
-    }
+            $('#table').append(row);
+        });
+      },
+      error:function(errorMessage)
+      {
+          console.log(errorMessage);
+      }
+    });
   });
-});
-</script>
-
+  </script>
+  {% endblock myContent %}
+  
 </body>
 </html>

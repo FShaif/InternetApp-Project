@@ -1,59 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
   <title>About Us</title>
   <!-- Favicon and touch icons -->
   <link rel="shortcut icon" type="image/jpg" href="static\images\Favicon.ico"/>
-
-  <!-- JQuery core -->
-  <script src="static/vendor/jquery/jquery.min.js"></script>
-
-  <!-- Bootstrap core -->
-  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom fonts for this template -->
-  <link href="static/vendor/font-awesome/css/all.min.css" rel="stylesheet" type="text/css">
-
 </head>
+
 <body>
-  <header>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-        <i class="fa-solid fa-house"></i></a>       
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="mobiles.html">Mobiles Portal</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-
   <!-- Main Content -->
+  {% extends "layout.html" %}
+  {% block myContent %}
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -66,8 +23,27 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-             <p>The following are the participants names and ID's</p>
+             <p>The following are the participants names and ID's:</p>
              <!-- Insert Student name and ID in a table with/without background image -->
+             <table style="margin:auto">
+              <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>ID</th>
+              </tr>
+              <tr>
+                <td>1</td><td>Fahad Shaif</td><td>PB0086</td>
+              </tr>
+              <tr>
+                <td>2</td><td>Omar Alattas</td><td>SA0169</td>
+              </tr>
+              <tr>
+                <td>3</td><td>Ameer Binjabi</td><td>SA0220</td>
+              </tr>
+              <tr>
+                <td>4</td><td>Saleh Alamoudi</td><td>SA0199</td>
+              </tr>
+             </table>
             </div>
             <div class="col-12 text-danger">
              <p> Please note that this practice project is made for testing and evaluation porpuses only.</p>
@@ -81,50 +57,6 @@
       </div>
     </div>
   </div>
-
-  
-  <!-- Footer -->
-  <footer class="fixed-bottom">
-    <hr>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="index.html">
-                <span class="fa-stack fa-lg">
-                  <i class="fa-solid fa-house"></i>
-                </span>Home Page
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="mobiles.html">
-                <span class="fa-stack fa-lg">
-                  <i class="fa-solid fa-mobile-screen-button"></i>
-                </span>Mobile Portal
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="about.html">
-                <span class="fa-stack fa-lg">
-                  <i class="fa-solid fa-info"></i>
-                </span>About Us
-              </a>
-            </li>
-            <li  class="list-inline-item">
-              <a href="contact.html">
-                <span class="fa-stack fa-lg">
-                  <i class="fa-solid fa-phone"></i>
-                </span>Contact Us
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy;  2021</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
+  {% endblock myContent %}
 </body>
-
 </html>

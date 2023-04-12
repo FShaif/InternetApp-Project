@@ -1,5 +1,5 @@
-from flask import Flask,render_template
-
+from flask import Flask,render_template,send_from_directory
+import os
 
 app = Flask(__name__)
 
@@ -34,6 +34,12 @@ def postSingle():
 @app.route("/reqres-data")
 def reqresData():
     return render_template('reqres-data.html')
+
+# Trying to get favicon working on layout instead of page
+@app.route("/static/favicon.ico") 
+def fav():
+    print(os.path.join(app.root_path, 'static'))
+    return send_from_directory(app.static_folder, 'favicon.ico')
 
 if __name__ == '__main__':
 	app.run( debug=True )
