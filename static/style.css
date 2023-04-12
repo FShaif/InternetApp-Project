@@ -6,6 +6,7 @@ button[type=submit] {
 }
 .btn {
   border: none;
+  background-color: #04AA6D;
   cursor: pointer;
   opacity: 0.8;
 }
