@@ -1,6 +1,5 @@
 from flask import Flask,render_template
-from json import dumps
-from postdata import posts
+
 
 app = Flask(__name__)
 
@@ -40,18 +39,19 @@ if __name__ == '__main__':
 	app.run( debug=True )
 
 
+from json import dumps
+from postdata import posts
 
-
-
-""" Temporarily Commented to test code 
 @app.route("/post/<int:post_id")
 def post(post_id):
     post = posts[post_id]   
-    return render_template('post-single.html',title=post['title'],p=post) # Changed this line and forgot what the old line was
-"""
-
+    return render_template('post-single.html',title=post['title'],p=post)
 
 @app.route("/json_posts")
 def json_posts():
+    data = {
+        'data': posts,
+        'total': len(posts)
+    }
     return dumps(posts)
 
