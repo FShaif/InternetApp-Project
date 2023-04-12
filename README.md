@@ -10,12 +10,23 @@
 ```
 Extract the files from the .Zip 
 
-open the `index.html` on any browser to explore the html pages of this project
+open the `index.html` file on any browser to explore the html pages of this project
 
 download and install python
 
+Open the termina by clicking at "Terminal" at the top menu then "New Terminal"
+
 Create a virtual environment for your workspace by inputting the following command before you start testing the source code:
 >python -m venv env
+Then activate the virtual environment by entering the following:
+>cd env
+>cd scripts
+>activate.bat
+
+*IMPORTANT NOTE*
+you need to be in the CMD terminal not powershell, if you are in power shell change the last code into the following instead:
+>activate.ps1
+to change terminals click the downward pointing arrow next to the "+" sign in the top right corner of the terminal window
 
 Install Flask by inputting the following commands in the terminal
 > pip install flask
