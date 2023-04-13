@@ -28,9 +28,13 @@ you need to be in the CMD terminal not powershell, if you are in power shell cha
 >activate.ps1
 to change terminals click the downward pointing arrow next to the "+" sign in the top right corner of the terminal window
 
-Install Flask by inputting the following commands in the terminal
+Install Flask by inputting the following commands in the terminal:
 > pip install flask
 > python.exe -m pip install --upgrade pip
+
+
+Install flask mail functions using the code:
+>pip install flask-mail
 
 ```
 
