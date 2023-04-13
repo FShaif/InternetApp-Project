@@ -3,6 +3,7 @@ from postdata import posts
 
 app = Flask(__name__)
 
+# Page Routes
 @app.route("/")
 def homePagex():
    return render_template('index.html')
@@ -47,14 +48,10 @@ def show_post(post_id):
         return render_template('404.html'), 404
 
     
-
-
-
-
-# Trying to get favicon working on layout instead of html page
+#to get favicon working on layout instead of html page
 import os
 from flask import send_from_directory
-from json import dumps,loads
+from json import dumps
 
 @app.route("/favicon.ico") 
 def favicon():
@@ -69,6 +66,34 @@ def json_posts():
     }
     return dumps(data)
 
+
+# Setting up Flask-Mail
+from flask_mail import Mail, Message
+
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+
+app.config['MAIL_USERNAME'] = 'my-name@gmail.com'
+app.config['MAIL_PASSWORD'] = '***********'
+
+mail = Mail(app)
+
+@app.route('/send_email', methods=['post'])
+def send_reset_email(user_email):
+
+   msg = Message('email title',
+                 sender = 'noreply@demo.com',
+                 recipients = [user_email] )
+
+   msg.body = f'''
+   	Hello { user_email }
+   '''
+   mail.send(msg)
+
+
+
+#debug tool
 if __name__ == '__main__':
 	app.run( debug=True )
 
