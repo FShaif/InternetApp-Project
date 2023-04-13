@@ -23,18 +23,11 @@ def contact():
 def mobiles():
     return render_template('mobiles.html')
 
-
-@app.route("/post-single")
-def postSingle():
-    return render_template('post-single.html',
-                           title='single posts',
-                           posts=posts)
-
 @app.route("/reqres-data")
 def reqresData():
     return render_template('reqres-data.html')
 
-@app.route("/post-all")
+@app.route("/posts")
 def home():
     return render_template('post-all.html',
                            title='all posts',
@@ -65,7 +58,8 @@ from json import dumps,loads
 
 @app.route("/favicon.ico") 
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route("/json_posts")
 def json_posts():
