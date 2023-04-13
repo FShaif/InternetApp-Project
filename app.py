@@ -40,23 +40,32 @@ def home():
                            title='all posts',
                            posts=posts)
 
+@app.route("/404")
+def error():
+    return render_template('404.html')
+
+@app.route('/posts/<int:post_id>')
+def show_post(post_id):
+    if post_id < len(posts):
+       p = posts[post_id]
+       return render_template('post-single.html',
+       title= f"Post#{post_id}", p = p )
+    else:
+        return render_template('404.html'), 404
+
+    
+
+
+
+
 # Trying to get favicon working on layout instead of html page
 import os
 from flask import send_from_directory
+from json import dumps,loads
+
 @app.route("/favicon.ico") 
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-if __name__ == '__main__':
-	app.run( debug=True )
-
-
-from json import dumps,loads
-
-# @app.route("/post/<int:post_id")
-# def post(post_id):
-#     post = posts[post_id]   
-#     return render_template('post-single.html',title=post['title'],p=post)
 
 @app.route("/json_posts")
 def json_posts():
@@ -66,5 +75,6 @@ def json_posts():
     }
     return dumps(data)
 
-
+if __name__ == '__main__':
+	app.run( debug=True )
 
