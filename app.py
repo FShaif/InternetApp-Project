@@ -69,13 +69,14 @@ def json_posts():
 
 # Setting up Flask-Mail
 from flask_mail import Mail, Message
+from flask import request
 
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 
-app.config['MAIL_USERNAME'] = 'my-name@gmail.com'
-app.config['MAIL_PASSWORD'] = '***********'
+app.config['MAIL_USERNAME'] = 'ubttester1@gmail.com'
+app.config['MAIL_PASSWORD'] = 'pzvldamybykhbjpz'
 
 mail = Mail(app)
 
@@ -91,7 +92,28 @@ def send_reset_email(user_email):
    '''
    mail.send(msg)
 
+#Implementing flask to the second form of the contact us page
+@app.route('/contact_us', methods=['POST'])
+def contact_us():
+    name = request.form['Contact-Name']
+    email = request.form['Contact-Email']
+    message = request.form['Contact-Message']
 
+    # Send email using Flask-Mail
+    msg = Message('Contact Us Form Submission',
+                  sender='noreply@demo.com',
+                  recipients=['ubttester1@gmail.com'])
+    msg.body = f'''
+        Name: {name}
+        Email: {email}
+        Message: {message}
+    '''
+    mail.send(msg)
+
+    # Return a success message to the user
+    return 'Thank you for your message!'\
+        '<a href="/contact"> Click here to submit another message.'\
+        '</a> <br> Or click <a href="/index">Home</a> to return to the main page'
 
 #debug tool
 if __name__ == '__main__':
