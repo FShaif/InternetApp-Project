@@ -24,14 +24,18 @@
       </div>
     </div>
   </div>
-  {% for p in posts %}
-    <div class="alert alert-success">
-      <h2>{{p['title']}}</h2>
-      <h3> {{p['content']}}</h3>
-      <p>{{p['date_posted']}}</p>
-      <small>{{p['author']}}</small>
 
-    </div>
+  <!-- display output by bootstrap -->
+  {% for p in posts %}
+  <div class="container mt-3">
+    <ul class="list-group">
+      <li class="list-group-item active">{{p['title']}}</li>
+      <li class="list-group-item">{{p['content']}}</li>
+      <li class="list-group-item">{{p['date_posted']}}</li>
+      <li class="list-group-item">{{p['author']}}</li>
+
+    </ul>
+  </div>
 
   {% endfor %}
 

@@ -22,12 +22,29 @@
        </div>
       </div>
     </div>
-    <div class="alert alert-success">
-    <h1>{{ p.title }}</h1>
-    <h3>{{ p.content }}</h3> 
-    <p>{{p.data_posted}}</p>
-    <small>{{p.author}}</small>
-    </div>
+
+<!-- display output by bootstrap -->
+    <table class="table table-primary">
+      <thead>
+        <tr>
+          <th scope="col">author</th>
+          <th scope="col">title</th>
+          <th scope="col">content</th>
+          <th scope="col">date_posted</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{p.author}}</td>
+          <td>{{p.title}}</td>
+          <td>{{p.content}}</td>
+          <td>{{p.date_posted}}</td>
+
+      </tbody>
+    </table>
+
   {% endblock myContent%}
 
 </body>
