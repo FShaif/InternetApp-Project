@@ -34,9 +34,6 @@ def home():
                            title='all posts',
                            posts=posts)
 
-@app.route("/404")
-def error():
-    return render_template('404.html')
 
 @app.route('/posts/<int:post_id>')
 def show_post(post_id):
