@@ -36,6 +36,12 @@ Install Flask by inputting the following commands in the terminal:
 Install flask mail functions using the code:
 >pip install flask-mail
 
+to install all packages
+> pip install -r requirements.txt
+
+to make a new requirements file
+> pip freeze > requirements.txt
+
 ```
 
 # Instructor comments
