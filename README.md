@@ -1,8 +1,10 @@
-# Team1 Welcome
-* m1= Fahad Shaif  - PB0086
+
+This is a full stack project for one of my college courses where we needed to create a functioning website
+
+# Team Members
+* m1 Lead= Fahad Shaif  - PB0086
 * m2= Omar Alattas - SA0169
-* m3= Ameer Binjabi - SA0220
-* m4= Saleh Alamoudi - SA0199
+
 
 # 
 
@@ -43,8 +45,3 @@ to make a new requirements file
 > pip freeze > requirements.txt
 
 ```
-
-# Instructor comments
->
->
->
